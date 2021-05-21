@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -19,7 +20,7 @@ public class Dev implements Serializable{
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "devoid")
 	private Integer devoid;
 	
 	@NotNull
