@@ -20,6 +20,8 @@ public class Dev implements Serializable{
 	
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dev_devoid")
+	@SequenceGenerator(name = "dev_devoid", sequenceName = "dev_id")
 	@Column(name = "devoid")
 	private Integer devoid;
 	

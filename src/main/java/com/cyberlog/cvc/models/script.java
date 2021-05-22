@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -18,7 +19,8 @@ public class script implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "script_scriptoid")
+	@SequenceGenerator(name = "script_scriptoid", sequenceName = "script_id")
 	@Column(name = "scriptoid")
 	private Integer scriptoid;
 	
@@ -36,11 +38,11 @@ public class script implements Serializable {
 	
 	@NotNull
 	@Column(name = "codigo")
-	private String codigo;
+	private byte[] codigo;
 	
 	@NotNull
 	@Column(name = "oldcodigo")
-	private String oldcodigo;
+	private byte[] oldcodigo;
 	
 	@NotNull
 	@Column(name = "skip", length = 1)
@@ -86,19 +88,19 @@ public class script implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public String getCodigo() {
+	public byte[] getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setCodigo(byte[] codigo) {
 		this.codigo = codigo;
 	}
 
-	public String getOldcodigo() {
+	public byte[] getOldcodigo() {
 		return oldcodigo;
 	}
 
-	public void setOldcodigo(String oldcodigo) {
+	public void setOldcodigo(byte[] oldcodigo) {
 		this.oldcodigo = oldcodigo;
 	}
 
