@@ -16,6 +16,10 @@ import com.sun.istack.NotNull;
 @Entity
 @Table( name = "versao")
 public class Versao implements Serializable{
+	public void Versao() {
+		
+	}
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id

@@ -28,25 +28,29 @@ public class ItensVersaoController {
 		return itensVersaoRepository.findAll();
 	}
 	
-	@GetMapping("/item/{id}")
-	public ItensVersao getItensVersao(@PathVariable(value = "id") Integer id) {
-		Optional<ItensVersao> oItem = itensVersaoRepository.findById(id);
+	@GetMapping("/item/{itensversaooid}")
+	public ItensVersao getItensVersao(@PathVariable(value = "itensversaooid") Integer itensversaooid) {
+		Optional<ItensVersao> oItem = itensVersaoRepository.findById(itensversaooid);
 		ItensVersao item = oItem.get();
 		return item;
 	}
 	
+	//Verificar Inserindo dev null
 	@PostMapping("/item")
 	public ItensVersao insertItemVersao(@RequestBody ItensVersao item) {
 		return itensVersaoRepository.save(item);
 	}
 	
+	//Verificar
 	@PutMapping("/item")
-	public ItensVersao updateItemVersao(@RequestBody ItensVersao item) {
+	public ItensVersao updateDev(@RequestBody ItensVersao item) {
 		return itensVersaoRepository.save(item);
 	}
 	
 	@DeleteMapping("/item/{id}")
-	public void deleteItemVersao(@PathVariable(name = "id") Integer id) {
+	public String deleteItemVersao(@PathVariable(name = "id") Integer id) {
 		itensVersaoRepository.deleteById(id);
+		
+		return "200";
 	}
 }

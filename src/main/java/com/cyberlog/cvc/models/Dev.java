@@ -16,8 +16,10 @@ import com.sun.istack.NotNull;
 @Table( name = "Dev")
 public class Dev implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	public Dev() {}
 	
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dev_devoid")
@@ -29,8 +31,8 @@ public class Dev implements Serializable{
 	@Column(name = "nome", length = 50)
 	private String nome;
 	
-	@Column(name = "id", length = 20)
-	private String id;
+	@Column(name = "usuario", length = 20)
+	private String usuario;
 	
 	@NotNull
 	@Column(name = "senha", length = 20)
@@ -64,13 +66,10 @@ public class Dev implements Serializable{
 	public void setDevoid(Integer devoid) {
 		this.devoid = devoid;
 	}
-	public String getId() {
-		return id;
+	public String getusuario() {
+		return usuario;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setusuario(String usuario) {
+		this.usuario = usuario;
 	}
-	
-	
-
 }

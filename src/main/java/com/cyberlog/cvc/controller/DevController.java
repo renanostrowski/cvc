@@ -45,9 +45,10 @@ public class DevController {
 		return devRepository.save(dev);
 	}
 	
-	@DeleteMapping("/dev/{id}")
-	public void deleteDev(Integer id) {
-		devRepository.deleteById(id);
+	@DeleteMapping("/dev/{devoid}")
+	public String deleteDev(@PathVariable(name = "devoid") Integer devoid) {
+		devRepository.deleteById(devoid);
+		return "200";
 	}
 	
 }

@@ -16,6 +16,10 @@ import com.sun.istack.NotNull;
 @Entity
 @Table(name = "tiposcript")
 public class TipoScript implements Serializable {
+	public void TipoScript() {
+		
+	}
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id

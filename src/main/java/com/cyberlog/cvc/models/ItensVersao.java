@@ -1,13 +1,16 @@
 package com.cyberlog.cvc.models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,6 +20,10 @@ import com.sun.istack.NotNull;
 @Table(name = "itensversao")
 public class ItensVersao implements Serializable {
 	
+	public ItensVersao() {
+		
+	}
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,7 +32,9 @@ public class ItensVersao implements Serializable {
 	private Integer itensversaooid;
 	
 	@NotNull
-	private Integer devoid;
+	@JoinColumn(name = "devoid", referencedColumnName = "devoid")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+	private Dev dev;
 	
 	@NotNull
 	@Column(name = "ticketoid", length = 50)
@@ -55,7 +64,7 @@ public class ItensVersao implements Serializable {
 	
 	@NotNull
 	@Column(name = "data")
-	private Timestamp data;
+	private Date data;
 
 	public Integer getItensversaooid() {
 		return itensversaooid;
@@ -65,12 +74,12 @@ public class ItensVersao implements Serializable {
 		this.itensversaooid = itensversaooid;
 	}
 
-	public Integer getDevoid() {
-		return devoid;
+	public Dev getDev() {
+		return dev;
 	}
 
-	public void setDevoid(Integer devoid) {
-		this.devoid = devoid;
+	public void setDev(Dev dev) {
+		this.dev = dev;
 	}
 
 	public String getTicketoid() {
@@ -129,11 +138,11 @@ public class ItensVersao implements Serializable {
 		this.teste = teste;
 	}
 
-	public Timestamp getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Timestamp data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 	

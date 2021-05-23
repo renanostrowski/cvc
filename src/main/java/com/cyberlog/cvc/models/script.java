@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -14,7 +17,11 @@ import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "script")
-public class script implements Serializable {
+public class Script implements Serializable {
+	
+	public void Script() {
+		
+	}
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -25,12 +32,14 @@ public class script implements Serializable {
 	private Integer scriptoid;
 	
 	@NotNull
-	@Column(name = "versaooid")
-	private Integer versaooid;
+	@JoinColumn(name = "versaooid", referencedColumnName = "versaooid")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Versao versao;
 	
 	@NotNull
-	@Column(name = "tiposcripoid")
-	private Integer tiposcriptoid;
+	@JoinColumn(name = "tiposcriptoid", referencedColumnName = "tiposcriptoid")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private TipoScript tiposcript;
 	
 	@NotNull
 	@Column(name = "descricao", length = 100)
@@ -64,20 +73,20 @@ public class script implements Serializable {
 		this.scriptoid = scriptoid;
 	}
 
-	public Integer getVersaooid() {
-		return versaooid;
+	public Versao getVersao() {
+		return versao;
 	}
 
-	public void setVersaooid(Integer versaooid) {
-		this.versaooid = versaooid;
+	public void setVersao(Versao versao) {
+		this.versao = versao;
 	}
 
-	public Integer getTiposcriptoid() {
-		return tiposcriptoid;
+	public TipoScript getTiposcript() {
+		return tiposcript;
 	}
 
-	public void setTiposcriptoid(Integer tiposcriptoid) {
-		this.tiposcriptoid = tiposcriptoid;
+	public void setTiposcript(TipoScript tiposcript) {
+		this.tiposcript = tiposcript;
 	}
 
 	public String getDescricao() {
